@@ -1,16 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Check, ChevronDown, Monitor, MousePointer2, ShieldCheck, CircleHelp, SlidersHorizontal, ArrowRight, BookOpen } from "lucide-react";
-import { milestones, type MotionMode } from "@/lib/workspace";
+import { Check, ChevronDown, Monitor, MousePointer2, ShieldCheck, CircleHelp, SlidersHorizontal, ArrowRight, BookOpen } from "lucide-react";
+import { type MotionMode } from "@/lib/workspace";
 import { useWorkspace } from "./workspace-shell";
 
-export function Roadmap() {
-  return <div className="page-stack"><section className="page-heading"><div><div className="eyebrow page-eyebrow">A PURPOSEFUL DIRECTION</div><h1>What comes next<span className="heading-period">.</span></h1><p>Build the foundation. Validate the capability. Advance together.</p></div><span className="environment-chip">PROPOSED ROADMAP</span></section><div className="information-banner"><span className="note-symbol">i</span><p>This is a conceptual direction, not a delivery commitment. Dates, integrations, and availability have not been confirmed.</p></div><div className="roadmap-list">{milestones.map((milestone) => <section key={milestone.number} className={`roadmap-card ${milestone.current ? "roadmap-current" : ""}`}><span className="roadmap-number font-mono">{milestone.number}</span><div className="roadmap-content"><div className="roadmap-title"><h2>{milestone.title}</h2><span className={`status-tag ${milestone.current ? "status-gold" : ""}`}>{milestone.status}</span></div><p className="font-body">{milestone.description}</p><ul>{milestone.items.map((item) => <li key={item}>{milestone.current ? <Check size={15} /> : <span className="small-square" />}{item}</li>)}</ul></div></section>)}</div><Link href="/ecosystem" className="button button-secondary self-start">Explore the product concepts<ArrowUpRight size={16} /></Link></div>;
-}
-
 const questions = [
-  { title: "What can I do in this preview?", text: "Explore all six product modules, search by product or category, read the proposed roadmap, and customize interface motion. Product panels explain which capabilities are available and which remain concepts." },
+  { title: "What can I do in this preview?", text: "Explore six modules, launch QYX.app and QYXpay interfaces, inspect fictional payment examples, review an illustrative payment scenario, and try workspace layout presets. The module inspector and filterable roadmap explain capabilities and dependencies. No accounts or payments are created." },
   { title: "Are any accounts or services connected?", text: "No. This workspace is an interface prototype. It has no authentication, database, bank connection, payment processor, or AI model access. It does not display live financial data or process transactions." },
   { title: "How do I navigate with a keyboard?", text: "Use Tab and Shift + Tab to move between controls and Enter to activate them. Press Command + K on Mac or Control + K on other keyboards to open workspace search. Escape closes any open dialog. A Skip to content link appears when focused." },
   { title: "Will my preferences be saved?", text: "Motion preferences remain active while you navigate this browsing session. Refreshing or reopening the workspace restores the Balanced default. Your device’s reduced-motion setting is always respected." },

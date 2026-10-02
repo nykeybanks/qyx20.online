@@ -1,0 +1,26 @@
+import type { Product } from "./workspace";
+
+export const moduleRoutes: Partial<Record<Product["id"], string>> = { qyx20: "/", qyxapp: "/access", qyxpay: "/payments" };
+export const moduleSpecs: Record<Product["id"], { code: string; dependencies: string[]; next: string; boundary: string }> = {
+  qyx20: { code: "Q20 / CONTROL", dependencies: ["Shared module catalog", "QYX design foundations"], next: "Persistent workspace preferences", boundary: "Interface routes are available. No production service monitoring." },
+  qyxapp: { code: "APP / ACCESS", dependencies: ["Module catalog", "Identity provider · planned"], next: "Account and permission architecture", boundary: "Launches local prototype pages, not authenticated external applications." },
+  qyxpay: { code: "PAY / VALUE", dependencies: ["Payment provider · not connected", "Identity and audit storage · planned"], next: "Provider sandbox and server-side validation", boundary: "Illustrative records only. No checkout, balance, or money movement." },
+  qyxos: { code: "OS / FOUNDATION", dependencies: ["Identity architecture · planned", "Shared service contracts · planned"], next: "Define cross-module service boundaries", boundary: "An operating-layer concept, not a running operating system." },
+  qyxai: { code: "AI / INTELLIGENCE", dependencies: ["Model connection · not connected", "Data permissions · planned"], next: "Validate assistance use cases", boundary: "No model inference or generated recommendations are available." },
+  qyxvr: { code: "VR / SPATIAL", dependencies: ["Device support · unvalidated", "Spatial runtime · planned"], next: "Define device and accessibility requirements", boundary: "No headset connection or spatial runtime is implemented." },
+};
+
+export type RoadmapStage = "In preview" | "Next to validate" | "Future direction";
+export type Initiative = { id: string; module: "QYX20" | "QYX.app" | "QYXpay" | "Ecosystem"; title: string; stage: RoadmapStage; description: string; criteria: string[]; dependency: string; route?: string };
+export const initiatives: Initiative[] = [
+  { id: "Q20-01", module: "QYX20", title: "Command center & module inspector", stage: "In preview", description: "A single place to understand module scope, discover available interfaces, and inspect dependencies.", criteria: ["Module capability inspector", "Desktop and mobile navigation", "Workspace layout exploration"], dependency: "Shared catalog and design foundations", route: "/workspace" },
+  { id: "APP-01", module: "QYX.app", title: "Unified access launcher", stage: "In preview", description: "A searchable entry point into the local prototype workspaces, with clear concept boundaries.", criteria: ["Search by product and capability", "Filter by interface availability", "Direct workspace launch"], dependency: "Module route registry", route: "/access" },
+  { id: "PAY-01", module: "QYXpay", title: "Payments interface exploration", stage: "In preview", description: "Explore ledger filtering and payment-state communication using fictional examples only.", criteria: ["Illustrative ledger and detail view", "Scenario review with input validation", "Explicit no-money-movement labels"], dependency: "No external services required for this UI", route: "/payments" },
+  { id: "APP-02", module: "QYX.app", title: "Identity & access architecture", stage: "Next to validate", description: "Define account ownership, permission boundaries, and session behavior before connecting services.", criteria: ["Select an identity provider", "Define workspace permission model", "Review session and recovery flows"], dependency: "User and security requirements" },
+  { id: "PAY-02", module: "QYXpay", title: "Provider-backed payment sandbox", stage: "Next to validate", description: "Validate a payment-provider sandbox with server-side amounts, idempotency, and verified events.", criteria: ["Connect a payment-provider sandbox", "Validate amounts and currencies on server", "Verify events and reconcile payment states"], dependency: "Payment provider, identity, and durable storage" },
+  { id: "Q20-02", module: "QYX20", title: "Persistent workspace state", stage: "Next to validate", description: "Move from transient interface controls to authenticated, durable workspace preferences and activity.", criteria: ["Define workspace-owned data", "Add scoped database access", "Validate audit and recovery behavior"], dependency: "Identity architecture and database" },
+  { id: "ECO-01", module: "Ecosystem", title: "Cross-module service contracts", stage: "Future direction", description: "Establish shared boundaries between the operating layer, product access, and payment experiences.", criteria: ["Document service contracts", "Validate permissions between modules", "Define failure and recovery states"], dependency: "Validated individual module services" },
+  { id: "AI-01", module: "Ecosystem", title: "Contextual intelligence", stage: "Future direction", description: "Evaluate useful, permission-aware assistance before selecting models or shipping automation.", criteria: ["Validate user assistance needs", "Define permitted context", "Evaluate model behavior"], dependency: "Data permissions and a model provider" },
+];
+
+export const previewModules = ["qyx20", "qyxapp", "qyxpay"] as const;

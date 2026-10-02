@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: { params: Promise<{ section: 
   return { title: entry ? `${entry.title} — QYX20` : "Page not found — QYX20", description: entry?.description };
 }
 
-export default async function SectionPage({ params }: { params: Promise<{ section: string }> }) {
+export default async function SectionPage({ params, searchParams }: { params: Promise<{ section: string }>; searchParams: Promise<{ module?: string | string[] }> }) {
   const { section } = await params;
   if (!routeSections.includes(section as Section)) notFound();
-  return <WorkspaceContent section={section as Section} />;
+  const { module } = await searchParams;
+  return <WorkspaceContent section={section as Section} initialModule={typeof module === "string" ? module : undefined} />;
 }

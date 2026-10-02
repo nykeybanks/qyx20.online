@@ -1,0 +1,3 @@
+export default function WorkspaceLoading() {
+  return <div className="page-stack console-page" role="status" aria-live="polite"><span className="eyebrow gold-label">OPENING WORKSPACE</span><div className="console-panel"><h1 className="font-display text-xl">Preparing your view.</h1><p className="panel-description">Loading the interface. No external services are being connected.</p><div className="flex flex-col gap-4" aria-hidden="true"><div className="h-4 w-2/3 rounded bg-qyx-graphite" /><div className="h-4 w-1/2 rounded bg-qyx-graphite" /><div className="h-36 rounded bg-qyx-charcoal" /></div></div></div>;
+}
